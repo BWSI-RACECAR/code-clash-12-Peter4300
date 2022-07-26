@@ -21,16 +21,24 @@ That's cheating (because I have done it before...) so you must modify the list i
 Test Cases:
 a = [1, 2, 3]; output = [1, 2, 4]
 a = [9]; output = [1,0]
-a = [1, 4, 5, 9]; output = [1]
+a = [1, 4, 5, 9]; output = [1, 4, 6, 0]
 """
 
 class Solution:
     def addOne(self,ary):
         # type ary: list
         # return type: list
-
         # TODO: Write code below to return a list "ary" with the solution to the prompt
-        
+        if len(ary) > 0:
+            ary[-1] += 1
+        length = len(ary)-1
+        while ary[length]==10:
+            ary[length]=0
+            length -= 1
+            if length < 0:
+                ary = [1] + ary
+            else:
+                ary[length] +=1
         return ary
 
 def main():
